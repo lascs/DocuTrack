@@ -73,23 +73,59 @@ fun SearchScreen(
 }
 
 @Composable
-fun ExportImportScreen() {
-    PlaceholderScreen("Export/Import Screen")
+fun ExportImportScreen(
+    onNavigateToExport: () -> Unit,
+    onNavigateToImport: () -> Unit,
+    onNavigateToBackup: () -> Unit
+) {
+    com.healthtracker.offline.ui.screens.export.ExportImportScreen(
+        onNavigateToExport = onNavigateToExport,
+        onNavigateToImport = onNavigateToImport,
+        onNavigateToBackup = onNavigateToBackup
+    )
 }
 
 @Composable
-fun SettingsScreen() {
-    PlaceholderScreen("Settings Screen")
+fun SettingsScreen(
+    onNavigateToTheme: () -> Unit,
+    onNavigateToBackup: () -> Unit,
+    onNavigateToAbout: () -> Unit
+) {
+    com.healthtracker.offline.ui.screens.settings.SettingsScreen(
+        onNavigateToTheme = onNavigateToTheme,
+        onNavigateToBackup = onNavigateToBackup,
+        onNavigateToAbout = onNavigateToAbout
+    )
 }
 
 @Composable
 fun DoctorDetailScreen(
     doctorId: Int,
-    onNavigateBack: () -> Unit = {},
-    onNavigateToEdit: () -> Unit = {},
-    onNavigateToAddAssignment: () -> Unit = {}
+    onNavigateBack: () -> Unit,
+    onNavigateToEdit: () -> Unit
 ) {
-    PlaceholderScreen("Doctor Detail Screen\nDoctor ID: $doctorId")
+    com.healthtracker.offline.ui.screens.doctors.DoctorDetailScreen(
+        doctorId = doctorId,
+        onNavigateBack = onNavigateBack,
+        onNavigateToEdit = onNavigateToEdit
+    )
+}
+
+@Composable
+fun InstitutionDetailScreen(
+    institutionId: Int,
+    onNavigateBack: () -> Unit,
+    onNavigateToEdit: () -> Unit,
+    onNavigateToAddWard: () -> Unit,
+    onNavigateToEditWard: (Int) -> Unit
+) {
+    com.healthtracker.offline.ui.screens.institutions.InstitutionDetailScreen(
+        institutionId = institutionId,
+        onNavigateBack = onNavigateBack,
+        onNavigateToEdit = onNavigateToEdit,
+        onNavigateToAddWard = onNavigateToAddWard,
+        onNavigateToEditWard = onNavigateToEditWard
+    )
 }
 
 @Composable
@@ -100,17 +136,6 @@ fun DoctorAddEditScreen(
 ) {
     val title = if (doctorId != null) "Edit Doctor\nDoctor ID: $doctorId" else "Add Doctor"
     PlaceholderScreen(title)
-}
-
-@Composable
-fun InstitutionDetailScreen(
-    institutionId: Int,
-    onNavigateBack: () -> Unit = {},
-    onNavigateToEdit: () -> Unit = {},
-    onNavigateToAddWard: () -> Unit = {},
-    onNavigateToEditWard: (Int) -> Unit = {}
-) {
-    PlaceholderScreen("Institution Detail Screen\nInstitution ID: $institutionId")
 }
 
 @Composable
