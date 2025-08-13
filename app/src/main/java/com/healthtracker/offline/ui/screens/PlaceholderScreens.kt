@@ -7,48 +7,69 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.healthtracker.offline.ui.screens.doctors.DoctorListScreen
+import com.healthtracker.offline.ui.screens.doctors.AddEditDoctorScreen
 
 /**
  * Placeholder screens for navigation structure.
  * These will be replaced with actual implementations in subsequent tasks.
  */
 
+// Import actual HomeScreen from its own file
+// The HomeScreen is already implemented in HomeScreen.kt
+
 @Composable
-fun HomeScreen(
-    onNavigateToAddDoctor: () -> Unit = {},
-    onNavigateToAddInstitution: () -> Unit = {},
-    onNavigateToSearch: (String) -> Unit = {},
-    onNavigateToDoctorDetail: (Int) -> Unit = {},
-    onNavigateToInstitutionDetail: (Int) -> Unit = {}
+fun DoctorListScreen(
+    onNavigateToDetail: (Int) -> Unit,
+    onNavigateToAdd: () -> Unit,
+    onNavigateToEdit: (Int) -> Unit
 ) {
-    PlaceholderScreen("Home Screen")
+    com.healthtracker.offline.ui.screens.doctors.DoctorListScreen(
+        onNavigateToDetail = onNavigateToDetail,
+        onNavigateToAdd = onNavigateToAdd,
+        onNavigateToEdit = onNavigateToEdit
+    )
 }
 
 @Composable
-fun DoctorsScreen(
-    onNavigateToAddDoctor: () -> Unit = {},
-    onNavigateToDoctorDetail: (Int) -> Unit = {},
-    onNavigateToEditDoctor: (Int) -> Unit = {}
+fun AddEditDoctorScreen(
+    doctorId: Int?,
+    onNavigateBack: () -> Unit,
+    onSaveSuccess: () -> Unit
 ) {
-    PlaceholderScreen("Doctors Screen")
+    com.healthtracker.offline.ui.screens.doctors.AddEditDoctorScreen(
+        doctorId = doctorId,
+        onNavigateBack = onNavigateBack,
+        onSaveSuccess = onSaveSuccess
+    )
 }
 
 @Composable
-fun InstitutionsScreen(
-    onNavigateToAddInstitution: () -> Unit = {},
-    onNavigateToInstitutionDetail: (Int) -> Unit = {},
-    onNavigateToEditInstitution: (Int) -> Unit = {}
+fun InstitutionListScreen(
+    onNavigateToDetail: (Int) -> Unit,
+    onNavigateToAdd: () -> Unit,
+    onNavigateToEdit: (Int) -> Unit
 ) {
-    PlaceholderScreen("Institutions Screen")
+    com.healthtracker.offline.ui.screens.institutions.InstitutionListScreen(
+        onNavigateToDetail = onNavigateToDetail,
+        onNavigateToAdd = onNavigateToAdd,
+        onNavigateToEdit = onNavigateToEdit
+    )
 }
 
 @Composable
 fun SearchScreen(
-    onNavigateToSearchResults: (String) -> Unit = {},
-    onNavigateToDoctorDetail: (Int) -> Unit = {},
-    onNavigateToInstitutionDetail: (Int) -> Unit = {}
+    onNavigateToFilters: () -> Unit,
+    onNavigateToSavedFilters: () -> Unit,
+    onNavigateToDoctorDetail: (Int) -> Unit,
+    onNavigateToInstitutionDetail: (Int) -> Unit
 ) {
-    PlaceholderScreen("Search Screen")
+    com.healthtracker.offline.ui.screens.search.SearchScreen(
+        onNavigateToFilters = onNavigateToFilters,
+        onNavigateToSavedFilters = onNavigateToSavedFilters,
+        onNavigateToDoctorDetail = onNavigateToDoctorDetail,
+        onNavigateToInstitutionDetail = onNavigateToInstitutionDetail
+    )
 }
 
 @Composable
